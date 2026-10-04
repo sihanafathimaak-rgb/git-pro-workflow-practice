@@ -3,15 +3,15 @@ function formatProfile(profile) {
     throw new TypeError("profile must be an object");
   }
 
-  const { name, role } = profile;
-  if (typeof name !== "string" || name.trim() === "") {
-    throw new TypeError("profile.name must be a non-empty string");
-  }
-  if (typeof role !== "string" || role.trim() === "") {
-    throw new TypeError("profile.role must be a non-empty string");
-  }
+  const [name, role] = ["name", "role"].map((key) => {
+    const value = profile[key];
+    if (typeof value !== "string" || value.trim() === "") {
+      throw new TypeError(`profile.${key} must be a non-empty string`);
+    }
+    return value.trim();
+  });
 
-  return `${name.trim()} (${role.trim()})`;
+  return `${name} (${role})`;
 }
 
 module.exports = { formatProfile };
