@@ -1,5 +1,6 @@
 function formatProfile(profile) {
-  return `${profile.name} (${profile.role})`;
+  const fields = ["name", "role"].map((key) => profile[key].trim());
+  return `${fields[0]} (${fields[1]})`;
 }
 
 module.exports = { formatProfile };

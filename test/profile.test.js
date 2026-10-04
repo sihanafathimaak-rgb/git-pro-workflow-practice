@@ -4,7 +4,7 @@ const { formatProfile } = require("../src/profile");
 
 test("formats a profile name and role", () => {
   assert.equal(
-    formatProfile({ name: "Ada", role: "Engineer" }),
+    formatProfile({ name: "  Ada ", role: " Engineer  " }),
     "Ada (Engineer)",
   );
 });
