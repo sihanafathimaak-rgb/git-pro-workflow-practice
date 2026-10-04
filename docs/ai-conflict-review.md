@@ -11,18 +11,22 @@ Both branches changed the body of `formatProfile` in `src/profile.js`.
 
 ## Conflict markers
 
-```text
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-  if (profile === null || typeof profile !== "object" || Array.isArray(profile)) {
-    throw new TypeError("profile must be an object");
-  }
-  const { name, role } = profile;
-  // Validate each field and format the trimmed values.
-&#61;&#61;&#61;&#61;&#61;&#61;&#61;
-  const fields = ["name", "role"].map((key) => profile[key].trim());
-  return `${fields[0]} (${fields[1]})`;
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/profile-refactor
-```
+> `<<<<<<< HEAD`
+> `  if (profile === null || typeof profile !== "object" || Array.isArray(profile)) {`
+> `    throw new TypeError("profile must be an object");`
+> `  }`
+> `  const { name, role } = profile;`
+> `  if (typeof name !== "string" || name.trim() === "") {`
+> `    throw new TypeError("profile.name must be a non-empty string");`
+> `  }`
+> `  if (typeof role !== "string" || role.trim() === "") {`
+> `    throw new TypeError("profile.role must be a non-empty string");`
+> `  }`
+> `  return \`${name.trim()} (${role.trim()})\`;`
+> `=======`
+> `  const fields = ["name", "role"].map((key) => profile[key].trim());`
+> `  return \`${fields[0]} (${fields[1]})\`;`
+> `>>>>>>> feature/profile-refactor`
 
 ## Resolution verification
 
