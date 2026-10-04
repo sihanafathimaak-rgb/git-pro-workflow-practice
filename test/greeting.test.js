@@ -12,3 +12,17 @@ test("rejects a blank name", () => {
     message: "name must be a non-empty string",
   });
 });
+
+test("formats an uppercase greeting", () => {
+  assert.equal(
+    formatGreeting("Git learner", "uppercase"),
+    "HELLO, GIT LEARNER!",
+  );
+});
+
+test("rejects an unsupported greeting style", () => {
+  assert.throws(() => formatGreeting("Git learner", "casual"), {
+    name: "TypeError",
+    message: 'style must be "standard" or "uppercase"',
+  });
+});
